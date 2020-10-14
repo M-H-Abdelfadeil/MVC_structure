@@ -5,6 +5,7 @@ class IndexController extends Controller{
 
 
     public function index(){
-        echo "index";
+        //echo "index";
+        echo $this->view('dashboard'.DS.'index');
     }
 }
