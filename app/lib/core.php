@@ -3,7 +3,7 @@ namespace BLOG\LIB;
 class Core {
     private $access='Front';
     private $controller="index";
-    private $method="default";
+    private $method="index";
     private $params=[];
     public function __construct(){
         $url=filter_var($_SERVER['REQUEST_URI'],FILTER_SANITIZE_STRING);
@@ -35,7 +35,18 @@ class Core {
             }
         }
 
-        print_r($this->params) ;
+        $namespaceController="\BLOG\Controller\\".ucfirst($this->access);
+        $classController=$namespaceController.'\\'.ucfirst($this->controller).'Controller';
+        if (!class_exists($classController)){
+            $classController='\BLOG\Controller\NotfoundController';
+        }
+        if (!method_exists($classController, $this->method)) {
+            $this->method='notfound';
+        }
+
+        $obj=new $classController;
+        $methodName=$this->method;
+        $obj->$methodName();
 
 
     }
