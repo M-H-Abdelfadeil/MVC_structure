@@ -1,5 +1,5 @@
 <?php
-namespace BLOG\Controller;
+namespace BLOG\Controllers;
 class NotfoundController extends Controller{
 
 }

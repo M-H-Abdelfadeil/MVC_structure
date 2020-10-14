@@ -35,10 +35,10 @@ class Core {
             }
         }
 
-        $namespaceController="\BLOG\Controller\\".ucfirst($this->access);
+        $namespaceController="\BLOG\Controllers\\".ucfirst($this->access);
         $classController=$namespaceController.'\\'.ucfirst($this->controller).'Controller';
         if (!class_exists($classController)){
-            $classController='\BLOG\Controller\NotfoundController';
+            $classController='\BLOG\Controllers\NotfoundController';
         }
         if (!method_exists($classController, $this->method)) {
             $this->method='notfound';
