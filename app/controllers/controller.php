@@ -2,6 +2,11 @@
 namespace BLOG\Controllers;
 class Controller{
     protected  $model;
+    protected  $params;
+
+    public function __construct($params){
+        $this->params=$params;
+    }
     public function notfound(){
         include APP_PATH.DS.'views'.DS.'notfound.view.php';
     }
@@ -23,8 +28,6 @@ class Controller{
         }else{
             echo 'notfound';
         }
-        //$namespaceModel="\BLOG\Model\\".$namespace.'\\'.ucfirst($model).'Model';
-        //echo $namespaceModel;
 
     }
 

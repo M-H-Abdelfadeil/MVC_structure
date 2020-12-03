@@ -44,7 +44,7 @@ class Core {
             $this->method='notfound';
         }
 
-        $obj=new $classController;
+        $obj=new $classController($this->params);
         $methodName=$this->method;
         $obj->$methodName();
 
